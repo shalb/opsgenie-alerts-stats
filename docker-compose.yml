@@ -1,0 +1,19 @@
+version: '2'
+services:
+  opsgenie-alerts-stats:
+    image: shalb/opsgenie-alerts-stats:0.0.1
+    volumes:
+      - ./exporter:/opt/exporter
+    restart: always
+   #ports:
+   #  - "127.0.0.1:9647:9647"
+    environment:
+      - OPSGENIE_API_KEY=00000000-0000-0000-0000-000000000000
+      - 'OPSGENIE_QUERY=status: closed AND priority > P3'
+     #- 'OPSGENIE_QUERY=status: closed AND tag: "Concertua Prometheus" AND priority > P3'
+      - OPSGENIE_DAYS_LIMIT=30
+     #- OPSGENIE_PAGINATION_LIMIT=100
+     #- LOG_LEVEL=INFO|DEBUG
+     #- MAIN_LOOP_SLEEP_INTERVAL=10
+     #- LISTEN_PORT=9647
+    entrypoint: ["/bin/bash", "-c", "sleep 9999999"]

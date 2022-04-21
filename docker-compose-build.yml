@@ -1,0 +1,7 @@
+version: '2'
+services:
+  opsgenie-alerts-stats:
+    build:
+      context: ./
+    image: shalb/opsgenie-alerts-stats:0.0.1
+
